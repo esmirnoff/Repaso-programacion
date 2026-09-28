@@ -30,7 +30,12 @@ public class Main {
         System.out.println(num1+" + "+num2+" = "+suma);
 
         System.out.println("5. ");
-
+        System.out.println("Escriba el primer numero: ");
+        double number1 = teclado.nextDouble();
+        System.out.println("Escriba el segundo numero: ");
+        double number2 = teclado.nextDouble();
+        double sumaa = number1 + number2;
+        double resta = number1-number2;
 
         System.out.println("12. ");
         System.out.println("Digita valor de x1: ");
