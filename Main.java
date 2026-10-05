@@ -35,7 +35,15 @@ public class Main {
         System.out.println("Escriba el segundo numero: ");
         double number2 = teclado.nextDouble();
         double sumaa = number1 + number2;
+        System.out.println(number1 +" + "+ number2 + " = "+sumaa);
         double resta = number1-number2;
+        System.out.println(number1 + " - "+ number2 + " = "+ resta);
+        double mult = number1*number2;
+        System.out.println( number1 + " * "+ number2 + " = "+ mult);
+        double div = number1/number2;
+        if(number2 == 0){
+            System.out.println( number1+" / "+ number2+" = Error");
+        }
 
         System.out.println("12. ");
         System.out.println("Digita valor de x1: ");
