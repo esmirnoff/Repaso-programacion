@@ -22,6 +22,7 @@ public class Main {
             System.out.println("12. Distancia entre dos puntos");
             System.out.println("13. Generar n, nn, nnn y la suma");
             System.out.println("14. Convertir segundos en formato HH:MM:SS");
+            System.out.println("15. Determinar si un numero es par o impar");
             System.out.println("0. Salir");
             System.out.print("Ingresa el numero del ejercicio que quieres probar: ");
 
@@ -70,6 +71,9 @@ public class Main {
                     break;
                 case 14:
                     conversionSegundos(teclado);
+                    break;
+                case 15:
+                    esPar(teclado);
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
@@ -244,5 +248,11 @@ public class Main {
         int seg = segundo % 60;
         String SS = String.format("%02d", seg);
         System.out.println(HH+":"+MM+":"+SS);
+    }
+
+    public static void esPar(Scanner teclado) {
+        System.out.println("15.");
+        System.out.println("Escribe un numero: ");
+        double numero = teclado.nextDouble();
     }
 }
