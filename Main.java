@@ -23,6 +23,9 @@ public class Main {
             System.out.println("13. Generar n, nn, nnn y la suma");
             System.out.println("14. Convertir segundos en formato HH:MM:SS");
             System.out.println("15. Determinar si un numero es par o impar");
+            System.out.println("16. Determinar si un numero es negativo o positivo");
+            System.out.println("17. Descuento a ventas mayores de 150000");
+            System.out.println("18. Mensaje segun promedio");
             System.out.println("0. Salir");
             System.out.print("Ingresa el numero del ejercicio que quieres probar: ");
 
@@ -49,7 +52,7 @@ public class Main {
                     enteroDecimal(teclado);
                     break;
                 case 7:
-                    calcularPromedio(teclado);
+                    calcularPromedioNotas(teclado);
                     break;
                 case 8:
                     calcularIVA(teclado);
@@ -75,6 +78,14 @@ public class Main {
                 case 15:
                     esPar(teclado);
                     break;
+                case 16:
+                    esPositivo(teclado);
+                    break;
+                case 17:
+                    descuentoVentas(teclado);
+                    break;
+                case 18:
+                    mensajePromedio(teclado);
                 case 0:
                     System.out.println("Saliendo del programa...");
                     break;
@@ -150,7 +161,11 @@ public class Main {
         System.out.println("Parte decimal: " + decimal);
     }
 
-    public static void calcularPromedio(Scanner teclado) {
+    public static double calcularPromedio(double n1, double n2, double n3, double n4, double n5){
+        return (n1*0.15)+(n2*0.2)+(n3*0.15)+(n4*0.3)+(n5*0.2);
+    }
+
+    public static void calcularPromedioNotas(Scanner teclado) {
         System.out.println("7. ");
         System.out.println("Primera nota:");
         double nota1 = teclado.nextDouble();
@@ -162,15 +177,19 @@ public class Main {
         double nota4 = teclado.nextDouble();
         System.out.println("Quinta nota:");
         double nota5 = teclado.nextDouble();
-        double prom = ((nota1*0.15)+(nota2*0.2)+(nota3*0.15)+(nota4*0.3)+(nota5*0.2));
+        double prom = calcularPromedio(nota1, nota2, nota3, nota4, nota5);
         System.out.println("Promedio: "+prom);
+    }
+
+    public static double obtenerIva(double precio) {
+        return precio * 0.190;
     }
 
     public static void calcularIVA(Scanner teclado) {
         System.out.println("8.");
         System.out.println("Escriba el precio bruto del producto:");
         double producto = teclado.nextDouble();
-        double iva = producto * 0.190;
+        double iva = obtenerIva(producto);
         System.out.println("IVA: "+iva);
         System.out.println("Precio final:"+ (producto + iva));
     }
@@ -254,5 +273,65 @@ public class Main {
         System.out.println("15.");
         System.out.println("Escribe un numero: ");
         double numero = teclado.nextDouble();
+        if (numero % 2 == 0){
+            System.out.println("Par");
+        }else {
+            System.out.println("Impar");
+        }
+    }
+
+    public static void esPositivo(Scanner teclado) {
+        System.out.println("16.");
+        System.out.println("Escribe un numero:");
+        double numero = teclado.nextDouble();
+        if (numero < 0) {
+            System.out.println("Negativo");
+        }else {
+            System.out.println("Positivo");
+        }
+    }
+
+    public static void descuentoVentas(Scanner teclado) {
+        System.out.println("17.");
+        System.out.println("Escribe el precio de el producto:");
+        double precio = teclado.nextDouble();
+        double iva = obtenerIva(precio);
+        System.out.println("IVA: "+iva);
+        double precioFin = precio + iva;
+        if (precioFin>150000) {
+            System.out.println("Descuento del 5% aplicado");
+            double descPrecio = precioFin * 0.95;
+            System.out.println("Total: "+descPrecio);
+        }else {
+            System.out.println("Total: "+precioFin);
+        }
+    }
+
+    public static void mensajePromedio(Scanner teclado) {
+        System.out.println("18. ");
+        System.out.println("Primera nota:");
+        double nota1 = teclado.nextDouble();
+        System.out.println("Segunda nota:");
+        double nota2 = teclado.nextDouble();
+        System.out.println("Tercer nota:");
+        double nota3 = teclado.nextDouble();
+        System.out.println("Cuarta nota:");
+        double nota4 = teclado.nextDouble();
+        System.out.println("Quinta nota:");
+        double nota5 = teclado.nextDouble();
+        double prom = calcularPromedio(nota1, nota2, nota3, nota4, nota5);
+        System.out.println("Promedio: "+prom);
+        if (prom<2.0) {
+            System.out.println("Lamentablemente su promedio le impide poder habilitar");
+        }
+        if (prom>= 2.0 && prom < 3.0) {
+            System.out.println("Reprobado, debe habilitar");
+        }
+        if (prom >= 3.0) {
+            System.out.println("Aprovado");
+        }
+        if (prom > 4.5){
+            System.out.println("Felicidades, obtuvo un promedio superior, esperamos que pueda seguir con los valores y capacidades que lo han distinguido/a en este periodo de aprendizaje");
+        }
     }
 }
