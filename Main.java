@@ -26,6 +26,10 @@ public class Main {
             System.out.println("16. Determinar si un numero es negativo o positivo");
             System.out.println("17. Descuento a ventas mayores de 150000");
             System.out.println("18. Mensaje segun promedio");
+            System.out.println("19. Resolver ecuacion cuadratica de tipo ax^2 + bx + c");
+            System.out.println("20. Usuario y contraseña predeterminados");
+            System.out.println("21. Escribir numero del 1 al 10");
+            System.out.println("22. Digitos de numeros menores a 100000");
             System.out.println("0. Salir");
             System.out.print("Ingresa el numero del ejercicio que quieres probar: ");
 
@@ -86,6 +90,18 @@ public class Main {
                     break;
                 case 18:
                     mensajePromedio(teclado);
+                    break;
+                case 19:
+                    resolverCuadratica(teclado);
+                    break;
+                case 20:
+                    userContraseña(teclado);
+                    break;
+                case 21:
+                    numberName(teclado);
+                    break;
+                case 22:
+                    digitosNumero(teclado);
                 case 0:
                     System.out.println("Saliendo del programa...");
                     break;
@@ -118,7 +134,7 @@ public class Main {
         System.out.print("Escribe un numero: ");
         double num = teclado.nextDouble();
         double result = num * num;
-        System.out.println( num+ "^2 = "+ result);
+        System.out.println(num + "^2 = " + result);
     }
 
     public static void sumaNumeros(Scanner teclado) {
@@ -161,8 +177,8 @@ public class Main {
         System.out.println("Parte decimal: " + decimal);
     }
 
-    public static double calcularPromedio(double n1, double n2, double n3, double n4, double n5){
-        return (n1*0.15)+(n2*0.2)+(n3*0.15)+(n4*0.3)+(n5*0.2);
+    public static double calcularPromedio(double n1, double n2, double n3, double n4, double n5) {
+        return (n1 * 0.15) + (n2 * 0.2) + (n3 * 0.15) + (n4 * 0.3) + (n5 * 0.2);
     }
 
     public static void calcularPromedioNotas(Scanner teclado) {
@@ -178,7 +194,7 @@ public class Main {
         System.out.println("Quinta nota:");
         double nota5 = teclado.nextDouble();
         double prom = calcularPromedio(nota1, nota2, nota3, nota4, nota5);
-        System.out.println("Promedio: "+prom);
+        System.out.println("Promedio: " + prom);
     }
 
     public static double obtenerIva(double precio) {
@@ -190,27 +206,27 @@ public class Main {
         System.out.println("Escriba el precio bruto del producto:");
         double producto = teclado.nextDouble();
         double iva = obtenerIva(producto);
-        System.out.println("IVA: "+iva);
-        System.out.println("Precio final:"+ (producto + iva));
+        System.out.println("IVA: " + iva);
+        System.out.println("Precio final:" + (producto + iva));
     }
 
     public static void areaPerimetro(Scanner teclado) {
         System.out.println("9.");
         System.out.println("Escriba el radio de el circulo:");
         double radio = teclado.nextDouble();
-        double area = Math.PI * radio*radio;
-        System.out.println("Area:"+ area);
+        double area = Math.PI * radio * radio;
+        System.out.println("Area:" + area);
         double perimetro = Math.PI * radio * 2;
-        System.out.println("Perimetro: "+ perimetro);
+        System.out.println("Perimetro: " + perimetro);
     }
 
     public static void areaHexagono(Scanner teclado) {
         System.out.println("10.");
         System.out.println("Escriba el lado del hexagono:");
         double lado = teclado.nextDouble();
-        double k = (3*Math.sqrt(3))/2;
-        double area = k*lado*lado;
-        System.out.println("Area:"+ area);
+        double k = (3 * Math.sqrt(3)) / 2;
+        double area = k * lado * lado;
+        System.out.println("Area:" + area);
     }
 
     public static void promN(Scanner teclado) {
@@ -221,11 +237,11 @@ public class Main {
         int contador = 0;
         while (n != contador) {
             contador++;
-            System.out.println("Digite el "+contador+" valor: ");
+            System.out.println("Digite el " + contador + " valor: ");
             double nValor = teclado.nextDouble();
             valorI += nValor;
         }
-        System.out.println("Promedio: "+(valorI/contador));
+        System.out.println("Promedio: " + (valorI / contador));
     }
 
     public static void distanciaCoordenadas(Scanner teclado) {
@@ -240,7 +256,7 @@ public class Main {
         double y2 = teclado.nextDouble();
         double x = x2 - x1;
         double y = y2 - y1;
-        double distancia = Math.sqrt(x*x + y*y);
+        double distancia = Math.sqrt(x * x + y * y);
         System.out.println("La distancia entre las coordenadas es: " + distancia);
     }
 
@@ -248,11 +264,11 @@ public class Main {
         System.out.println("13. ");
         System.out.println("Digite n (Un solo digito): ");
         int n = teclado.nextInt();
-        if (n >= 10 || n <= -10){
+        if (n >= 10 || n <= -10) {
             System.out.println("Invalido, mas de un digito");
-        }else {
-            System.out.println( n+", "+(n*11)+ ", "+(n*111));
-            System.out.println("Suma: "+ (n+(n*11)+(n*111)));
+        } else {
+            System.out.println(n + ", " + (n * 11) + ", " + (n * 111));
+            System.out.println("Suma: " + (n + (n * 11) + (n * 111)));
         }
     }
 
@@ -260,22 +276,22 @@ public class Main {
         System.out.println("14.");
         System.out.println("Digite la cantidad de segundos: ");
         int segundo = teclado.nextInt();
-        int horas = segundo/3600;
+        int horas = segundo / 3600;
         String HH = String.format("%02d", horas);
         int minutos = (segundo % 3600) / 60;
         String MM = String.format("%02d", minutos);
         int seg = segundo % 60;
         String SS = String.format("%02d", seg);
-        System.out.println(HH+":"+MM+":"+SS);
+        System.out.println(HH + ":" + MM + ":" + SS);
     }
 
     public static void esPar(Scanner teclado) {
         System.out.println("15.");
         System.out.println("Escribe un numero: ");
         double numero = teclado.nextDouble();
-        if (numero % 2 == 0){
+        if (numero % 2 == 0) {
             System.out.println("Par");
-        }else {
+        } else {
             System.out.println("Impar");
         }
     }
@@ -286,7 +302,7 @@ public class Main {
         double numero = teclado.nextDouble();
         if (numero < 0) {
             System.out.println("Negativo");
-        }else {
+        } else {
             System.out.println("Positivo");
         }
     }
@@ -296,14 +312,14 @@ public class Main {
         System.out.println("Escribe el precio de el producto:");
         double precio = teclado.nextDouble();
         double iva = obtenerIva(precio);
-        System.out.println("IVA: "+iva);
+        System.out.println("IVA: " + iva);
         double precioFin = precio + iva;
-        if (precioFin>150000) {
+        if (precioFin > 150000) {
             System.out.println("Descuento del 5% aplicado");
             double descPrecio = precioFin * 0.95;
-            System.out.println("Total: "+descPrecio);
-        }else {
-            System.out.println("Total: "+precioFin);
+            System.out.println("Total: " + descPrecio);
+        } else {
+            System.out.println("Total: " + precioFin);
         }
     }
 
@@ -320,18 +336,119 @@ public class Main {
         System.out.println("Quinta nota:");
         double nota5 = teclado.nextDouble();
         double prom = calcularPromedio(nota1, nota2, nota3, nota4, nota5);
-        System.out.println("Promedio: "+prom);
-        if (prom<2.0) {
+        System.out.println("Promedio: " + prom);
+        if (prom < 2.0) {
             System.out.println("Lamentablemente su promedio le impide poder habilitar");
         }
-        if (prom>= 2.0 && prom < 3.0) {
+        if (prom >= 2.0 && prom < 3.0) {
             System.out.println("Reprobado, debe habilitar");
         }
         if (prom >= 3.0) {
             System.out.println("Aprovado");
         }
-        if (prom > 4.5){
+        if (prom > 4.5) {
             System.out.println("Felicidades, obtuvo un promedio superior, esperamos que pueda seguir con los valores y capacidades que lo han distinguido/a en este periodo de aprendizaje");
+        }
+    }
+
+    public static void resolverCuadratica(Scanner teclado) {
+        System.out.println("19.");
+        System.out.println("ax^2 + bx +c");
+        System.out.println("Escribe el valor de a: ");
+        double a = teclado.nextDouble();
+        System.out.println("Escribe el valor de b:");
+        double b = teclado.nextDouble();
+        System.out.println("Escribe el valor de c:");
+        double c = teclado.nextDouble();
+        double d = (b * b) - (4 * a * c);
+        if (d < 0) {
+            double parteReal = -b / (2 * a);
+            double parteImagi = Math.sqrt(-d / (2 * a));
+            System.out.println("Raices complejas");
+            System.out.println("x1 = " + parteReal + " + " + parteImagi + "i");
+            System.out.println("x2 = " + parteReal + " - " + parteImagi + "i");
+        }
+        if (d > 0) {
+            double x1 = (-b + Math.sqrt(d)) / (2 * a);
+            double x2 = (-b - Math.sqrt(d)) / (2 * a);
+            System.out.println("2 raices reales y diferentes");
+            System.out.println("x1 = " + x1);
+            System.out.println("x2 = " + x2);
+        }
+        if (d == 0) {
+            System.out.println("Una raiz real o doble");
+            double x = -b / (2 * a);
+            System.out.println("x = " + x);
+        }
+    }
+
+    public static void userContraseña(Scanner teclado) {
+        System.out.println("20.");
+        System.out.println("Ingrese el usuario:");
+        String usuario = teclado.next();
+        while (!usuario.equalsIgnoreCase("martinelimpar")) {
+            System.out.println("Usuario no encontrado");
+            System.out.println("Ingrese el usuario: ");
+            usuario = teclado.next();
+        }
+        System.out.println("Ingrese la contraseña");
+        String password = teclado.next();
+        while (!password.equalsIgnoreCase("martin123")) {
+            System.out.println("Contraseña incorrecta, intenta de nuevo");
+            password = teclado.next();
+        }
+        System.out.println("Accediendo a "+ usuario);
+    }
+
+    public static String obtenerNombreNumero (int numero) {
+        switch (numero) {
+            case 1:
+                return "UNO";
+            case 2:
+               return "DOS";
+            case 3:
+                return"TRES";
+            case 4:
+                return"CUATRO";
+            case 5:
+                return"CINCO";
+            case 6:
+                return"SEIS";
+            case 7:
+                return"SIETE";
+            case 8:
+                return "OCHO";
+            case 9:
+                return"NUEVE";
+            case 10:
+                return"DIEZ";
+            default:
+                return "ERROR";
+        }
+    }
+
+    public static void numberName(Scanner teclado) {
+        System.out.println("21.");
+        System.out.println("Ingrese un numero del 1 al 10");
+        int numero = teclado.nextInt();
+        if (numero >= 1 && numero <= 10) {
+            String nombre = obtenerNombreNumero(numero);
+            System.out.println(numero+ " ---> "+ nombre);
+        }else {
+            System.out.println("El numero no se encuentra dentro de lo establecido");
+        }
+    }
+
+    public static void digitosNumero(Scanner teclado) {
+        System.out.println("22.");
+        System.out.println("Ingrese un numero del 1 a 100000");
+        int numero = teclado.nextInt();
+        if (numero >= 1 && numero <= 100000) {
+            String cadena = String.valueOf(Math.abs(numero));
+            int digito = cadena.length();
+            System.out.println(numero+ " tiene "+digito+ " digitos");
+        }else {
+            System.out.println("El numero no se encuentra dentro de lo establecido");
         }
     }
 }
