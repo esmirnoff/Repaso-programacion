@@ -30,6 +30,8 @@ public class Main {
             System.out.println("20. Usuario y contraseña predeterminados");
             System.out.println("21. Escribir numero del 1 al 10");
             System.out.println("22. Digitos de numeros menores a 100000");
+            System.out.println("23. Ver incremento en 3 numeros");
+            System.out.println("24. Numero entre 1 y 7 para dia de la semana");
             System.out.println("0. Salir");
             System.out.print("Ingresa el numero del ejercicio que quieres probar: ");
 
@@ -102,6 +104,13 @@ public class Main {
                     break;
                 case 22:
                     digitosNumero(teclado);
+                    break;
+                case 23:
+                    incremento(teclado);
+                    break;
+                case 24:
+                    diaSemana(teclado);
+                    break;
                 case 0:
                     System.out.println("Saliendo del programa...");
                     break;
@@ -449,6 +458,68 @@ public class Main {
             System.out.println(numero+ " tiene "+digito+ " digitos");
         }else {
             System.out.println("El numero no se encuentra dentro de lo establecido");
+        }
+    }
+
+    public static void incremento(Scanner teclado) {
+        System.out.println("23.");
+        System.out.println("Digite el primero numero");
+        int n1 = teclado.nextInt();
+        System.out.println("Digite el segundo numero");
+        int n2 = teclado.nextInt();
+        System.out.println("Digite el tercer numero");
+        int n3 = teclado.nextInt();
+        if (n1 < n2) {
+            if (n2 < n3) {
+                System.out.println("Incrementa");
+            }
+            if (n3 < n1 || n3 < n2) {
+                System.out.println("No hay patron de incremento");
+            }
+        }
+        if (n1 > n2) {
+            if (n2 > n3) {
+                System.out.println("Decrementa");
+            }
+            if (n3 > n1 || n3 > n2) {
+                System.out.println("No hay patron de incremento");
+            }
+        }
+        if (n1 == n2 || n1 == n3 || n3 == n2) {
+            System.out.println("No hay patron de incremento");
+        }
+    }
+
+    public static void diaSemana(Scanner teclado) {
+        System.out.println("24.");
+        System.out.println("Ingrese un numero del 1 al 7: ");
+        int dia = teclado.nextInt();
+        if (dia >= 1 && dia <= 7) {
+            switch (dia) {
+                case 1:
+                    System.out.println("LUNES");
+                    break;
+                case 2:
+                    System.out.println("MARTES");
+                    break;
+                case 3:
+                    System.out.println("MIERCOLES");
+                    break;
+                case 4:
+                    System.out.println("JUEVES");
+                    break;
+                case 5:
+                    System.out.println("VIERNES");
+                    break;
+                case 6:
+                    System.out.println("SABADO");
+                    break;
+                case 7:
+                    System.out.println("DOMINGO");
+                    break;
+            }
+        }else {
+            System.out.println("Numero fuera de lo establecido");
         }
     }
 }
