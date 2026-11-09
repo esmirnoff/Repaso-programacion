@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -32,6 +33,8 @@ public class Main {
             System.out.println("22. Digitos de numeros menores a 100000");
             System.out.println("23. Ver incremento en 3 numeros");
             System.out.println("24. Numero entre 1 y 7 para dia de la semana");
+            System.out.println("25. Invertir un texto");
+            System.out.println("26. Escribir en mayuscula las primeras letras de un texto");
             System.out.println("0. Salir");
             System.out.print("Ingresa el numero del ejercicio que quieres probar: ");
 
@@ -110,6 +113,12 @@ public class Main {
                     break;
                 case 24:
                     diaSemana(teclado);
+                    break;
+                case 25:
+                    invText(teclado);
+                    break;
+                case 26:
+                    primerLetra(teclado);
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
@@ -521,5 +530,42 @@ public class Main {
         }else {
             System.out.println("Numero fuera de lo establecido");
         }
+    }
+
+    public static String invertirTexto(String texto) {
+        String invertido = new StringBuilder(texto).reverse().toString();
+        return invertido;
+    }
+
+    public static void invText(Scanner teclado) {
+        System.out.println("25.");
+        System.out.println("Ingrese un texto: ");
+        String texto = teclado.nextLine();
+        String invertido = invertirTexto(texto);
+        System.out.println(invertido);
+    }
+
+    public static String textMayus (String texto) {
+        if (texto == null || texto.isEmpty()) {
+            return texto;
+        }
+        String[] palabras = texto.split("(?<=\\s)|(?=\\s)");
+        StringBuilder resultado = new StringBuilder();
+        for (String palabra : palabras) {
+            if (!palabra.isEmpty()) {
+                resultado.append(Character.toUpperCase(palabra.charAt(0))).append(palabra.substring(1).toLowerCase());
+            }else {
+                resultado.append(palabra);
+            }
+        }
+        return resultado.toString();
+    }
+
+    public static void primerLetra(Scanner teclado) {
+        System.out.println("26.");
+        System.out.println("Ingrese un texto:");
+        String texto = teclado.nextLine();
+        String resultado = textMayus(texto);
+        System.out.println(resultado);
     }
 }
