@@ -35,6 +35,10 @@ public class Main {
             System.out.println("24. Numero entre 1 y 7 para dia de la semana");
             System.out.println("25. Invertir un texto");
             System.out.println("26. Escribir en mayuscula las primeras letras de un texto");
+            System.out.println("27. Escribir la penultima palabra de un texto");
+            System.out.println("28. Verificar si un texto contiene al otro");
+            System.out.println("29. Verificar si una palabra es un palindromo");
+            System.out.println("30. Calcular el area de un poligono");
             System.out.println("0. Salir");
             System.out.print("Ingresa el numero del ejercicio que quieres probar: ");
 
@@ -119,6 +123,18 @@ public class Main {
                     break;
                 case 26:
                     primerLetra(teclado);
+                    break;
+                case 27:
+                    penUltim(teclado);
+                    break;
+                case 28:
+                    contieneTexto(teclado);
+                    break;
+                case 29:
+                    Palindromo(teclado);
+                    break;
+                case 30:
+                    areaPoligono(teclado);
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
@@ -567,5 +583,91 @@ public class Main {
         String texto = teclado.nextLine();
         String resultado = textMayus(texto);
         System.out.println(resultado);
+    }
+
+    public static String obtenerPenultimo(String texto) {
+        String textLimpio = texto.trim();
+        if (textLimpio.isEmpty()) {
+            return "El texto esta vacio.";
+        }
+        String[] palabras = textLimpio.split("\\s+");
+        if (palabras.length < 2) {
+            return "El texto debe contener al menos 2 palabras.";
+        }
+        return palabras[palabras.length - 2];
+    }
+
+    public static void penUltim(Scanner teclado) {
+        System.out.println("27.");
+        System.out.println("Ingrese un texto:");
+        String texto = teclado.nextLine();
+        String resultado = obtenerPenultimo(texto);
+        System.out.println(resultado);
+    }
+
+    public static boolean conText(String texto1, String texto2) {
+        return texto2.contains(texto1);
+    }
+
+    public static void contieneTexto(Scanner teclado) {
+        System.out.println("28.");
+        System.out.println("Ingrese su primer texto:");
+        String texto1 = teclado.nextLine();
+        System.out.println("Ingrese su segundo texto:");
+        String texto2 = teclado.nextLine();
+        if (conText(texto1, texto2)) {
+            System.out.println("El texto 2 contiene el texto 1");
+        }else {
+            System.out.println("El texto 2 no contiene el texto 1");
+        }
+    }
+
+    public static boolean esPalindromo(String palabra) {
+        String textoLimpio = palabra.trim().toLowerCase();
+        String invertido = new StringBuilder(textoLimpio).reverse().toString();
+        return textoLimpio.equals(invertido);
+    }
+
+    public static void Palindromo(Scanner teclado) {
+        System.out.println("29.");
+        System.out.println("Ingrese una palabra:");
+        String palabra = teclado.nextLine();
+        if (esPalindromo(palabra)) {
+            System.out.println("true");
+        }else {
+            System.out.println("false");
+        }
+    }
+
+    public static double calcAreaPoli (double[] x, double[] y) {
+        int n = x.length;
+        double suma1 = 0;
+        double suma2 = 0;
+        for (int i = 0; i < n; i++) {
+            int siguiente = (i + 1) % n;
+            suma1 += x[i] * y[siguiente];
+            suma2 += y[i] * x[siguiente];
+        }
+        return Math.abs(suma1-suma2/2.0);
+    }
+
+    public static void areaPoligono(Scanner teclado) {
+        System.out.println("30.");
+        System.out.println("Ingrese el numero de lados del poligono:");
+        int n = teclado.nextInt();
+        if (n < 3) {
+            System.out.println("Un poligono tiene al menos 3 lados");
+            return;
+        }
+        double[] x = new double[n];
+        double[] y = new double[n];
+        for (int i = 0; i < n; i++) {
+            System.out.println("Ingrese coordenada x"+(i+1)+":");
+            x[i] = teclado.nextDouble();
+            System.out.println("Ingrese coordenada y"+(i+1)+":");
+            y[i] = teclado.nextDouble();
+        }
+        double area = calcAreaPoli(x,y);
+        System.out.println("El area del poligono es: "+area);
     }
 }
