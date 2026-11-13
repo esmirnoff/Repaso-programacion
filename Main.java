@@ -39,6 +39,16 @@ public class Main {
             System.out.println("28. Verificar si un texto contiene al otro");
             System.out.println("29. Verificar si una palabra es un palindromo");
             System.out.println("30. Calcular el area de un poligono");
+            System.out.println("31. Imprimir los 10 primeros numeros naturales");
+            System.out.println("32. Imprimir los primeros 10 numeros naturales e impares");
+            System.out.println("33. Imprimir los primeros 10 numeros naturales pares");
+            System.out.println("34. Ingresar entero hasta que sea positivo");
+            System.out.println("35. Convertir numero decimal en binario");
+            System.out.println("36. Convertir numero binario en decimal");
+            System.out.println("37. Imprimir patron en escalera del 1 al 10");
+            System.out.println("38. Triangulo de ´´@´´");
+            System.out.println("39. Triangulo invertido de ´´*´´");
+            System.out.println("40. Ejercicio final");
             System.out.println("0. Salir");
             System.out.print("Ingresa el numero del ejercicio que quieres probar: ");
 
@@ -135,6 +145,36 @@ public class Main {
                     break;
                 case 30:
                     areaPoligono(teclado);
+                    break;
+                case 31:
+                    diezNaturales();
+                    break;
+                case 32:
+                    diezNatImpares();
+                    break;
+                case 33:
+                    diezNatPares();
+                    break;
+                case 34:
+                    validPositivo(teclado);
+                    break;
+                case 35:
+                    dcmlBnr(teclado);
+                    break;
+                case 36:
+                    bnrDcml(teclado);
+                    break;
+                case 37:
+                    patronEscalera();
+                    break;
+                case 38:
+                    trianguloArroba(teclado);
+                    break;
+                case 39:
+                    trianguloAsterisco(teclado);
+                    break;
+                case 40:
+                    problemaFinal(teclado);
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
@@ -669,5 +709,198 @@ public class Main {
         }
         double area = calcAreaPoli(x,y);
         System.out.println("El area del poligono es: "+area);
+    }
+
+    public static void diezNaturales() {
+        System.out.println("31.");
+        for (int i = 1; i <= 10; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+
+    public static void diezNatImpares() {
+        System.out.println("32. ");
+        int contador = 0;
+        int numero = 1;
+        while (contador < 10) {
+            if (numero % 2 != 0) {
+                System.out.print(numero + " ");
+                contador++;
+            }
+            numero++;
+        }
+        System.out.println();
+    }
+
+    public static void diezNatPares() {
+        System.out.println("33. ");
+        for (int i = 1; i <= 10; i++) {
+            System.out.print((i * 2) + " ");
+        }
+        System.out.println();
+    }
+
+    public static void validPositivo(Scanner teclado) {
+        System.out.println("34.");
+        int num;
+        do {
+            System.out.print("Ingresa un numero entero positivo: ");
+            num = teclado.nextInt();
+            if (num <= 0) {
+                System.out.println("Valor no permitido.");
+            }
+        } while (num <= 0);
+        teclado.nextLine();
+        System.out.println("Valor valido ingresado: " + num);
+    }
+
+    public static void dcmlBnr(Scanner teclado) {
+        System.out.println("35.");
+        System.out.print("Ingresa un numero decimal entero: ");
+        int decimal = teclado.nextInt();
+        teclado.nextLine();
+
+        if (decimal == 0) {
+            System.out.println("Binario: 0");
+            return;
+        }
+
+        String binario = "";
+        int temp = decimal;
+        while (temp > 0) {
+            binario = (temp % 2) + binario;
+            temp /= 2;
+        }
+        System.out.println("Binario: " + binario);
+    }
+
+    public static void bnrDcml(Scanner teclado) {
+        System.out.println("36.");
+        System.out.print("Ingresa un numero binario (solo 0s y 1s): ");
+        String binario = teclado.nextLine().trim();
+        int decimal = 0;
+        int potencia = 0;
+        for (int i = binario.length() - 1; i >= 0; i--) {
+            char digito = binario.charAt(i);
+            if (digito == '1') {
+                decimal += Math.pow(2, potencia);
+            } else if (digito != '0') {
+                System.out.println("Error: el numero ingresado no es binario.");
+                return;
+            }
+            potencia++;
+        }
+        System.out.println("Decimal: " + decimal);
+    }
+
+    public static void patronEscalera() {
+        System.out.println("37.");
+        for (int i = 1; i <= 10; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+
+    public static void trianguloArroba(Scanner teclado) {
+        System.out.println("38.");
+        System.out.print("Ingresa el numero de filas: ");
+        int filas = teclado.nextInt();
+        teclado.nextLine();
+        for (int i = 1; i <= filas; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("@");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void trianguloAsterisco(Scanner teclado) {
+        System.out.println("39.");
+        System.out.print("Ingresa el numero de filas: ");
+        int filas = teclado.nextInt();
+        teclado.nextLine();
+        for (int i = filas; i >= 1; i--) {
+            for (int espacio = 0; espacio < (filas - i); espacio++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static double calcularCostoBulto(double peso) {
+        if (peso >= 0 && peso <= 25) {
+            return 0;
+        } else if (peso >= 26 && peso <= 300) {
+            return peso * 1500;
+        } else if (peso >= 301 && peso <= 500) {
+            return peso * 2500;
+        }
+        return 0;
+    }
+
+    public static void problemaFinal(Scanner teclado) {
+        System.out.println("CONTROL DE EQUIPAJE BOEING 747");
+        final double CAPACIDAD_MAXIMA = 18000.0;
+        final double PESO_MAX_BULTO = 500.0;
+        final double TRM = 3500.0;
+        double pesoTotalAcumulado = 0;
+        int totalBultos = 0;
+        double bultoMasPesado = 0;
+        double bultoMasLiviano = Double.MAX_VALUE;
+        double ingresoTotalPesos = 0;
+        while (pesoTotalAcumulado < CAPACIDAD_MAXIMA) {
+            System.out.println("Capacidad disponible: " + (CAPACIDAD_MAXIMA - pesoTotalAcumulado) + " kg");
+            System.out.print("Ingrese el peso del bulto en kg (o digite 0 para cerrar el vuelo): ");
+            double peso = teclado.nextDouble();
+            if (peso == 0) {
+                break;
+            }
+            if (peso < 0) {
+                System.out.println("Error: El peso no puede ser negativo.");
+                continue;
+            }
+            if (peso > PESO_MAX_BULTO) {
+                System.out.println("Rechazado: El bulto excede el limite permitido de 500 kg.");
+                continue;
+            }
+            if (pesoTotalAcumulado + peso > CAPACIDAD_MAXIMA) {
+                System.out.println("Rechazado: El bulto excede la capacidad restante del avion (18.000 kg max).");
+                continue;
+            }
+            totalBultos++;
+            pesoTotalAcumulado += peso;
+            ingresoTotalPesos += calcularCostoBulto(peso);
+            if (peso > bultoMasPesado) {
+                bultoMasPesado = peso;
+            }
+            if (peso < bultoMasLiviano) {
+                bultoMasLiviano = peso;
+            }
+            System.out.println("Bulto #" + totalBultos + " registrado. Costo: $" + calcularCostoBulto(peso) + " COP");
+        }
+        teclado.nextLine();
+        System.out.println("REPORTE FINAL DEL VUELO");
+        if (totalBultos == 0) {
+            System.out.println("No se ingresaron bultos para este vuelo.");
+        } else {
+            double pesoPromedio = pesoTotalAcumulado / totalBultos;
+            double ingresoDolares = ingresoTotalPesos / TRM;
+            System.out.println("a.");
+            System.out.println("Numero total de bultos ingresados: " + totalBultos);
+            System.out.println("b.");
+            System.out.println("Peso del bulto mas pesado: " + bultoMasPesado + " kg");
+            System.out.println("Peso del bulto mas liviano: " + bultoMasLiviano + " kg");
+            System.out.println("c.");
+            System.out.println("Peso promedio de los bultos: " +pesoPromedio+ " kg");
+            System.out.println("c.");
+            System.out.println("Ingreso total en pesos: $" +ingresoTotalPesos+ " COP");
+            System.out.println("Ingreso total en dolares (TRM $3.500): $" +ingresoDolares+ "USD");
+        }
     }
 }
